@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>해남 솔라시도 토지 투자 세미나 - VIP 초청</title>
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+        :root {
+            --bg-color: #0A0E1A;
+            --card-bg: #161B2B;
+            --gold: #C9A84C;
+            --white: #FFFFFF;
+            --red: #D32F2F;
+            --gray: #A0A0A0;
+            --border: #2A2F3E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #000;
+            color: var(--white);
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Utility */
+        .text-gold { color: var(--gold); }
+        .text-red { color: var(--red); }
+        .bold { font-weight: 700; }
+        .center { text-align: center; }
+        section { padding: 60px 20px; border-bottom: 1px solid var(--border); }
+
+        /* Section 1: Hero */
+        .hero {
+            padding-top: 80px;
+            padding-bottom: 80px;
+            background: linear-gradient(180deg, rgba(10, 14, 26, 0.8) 0%, rgba(10, 14, 26, 1) 100%);
+            position: relative;
+        }
+
+        .alert-banner {
+            background-color: var(--red);
+            padding: 8px 15px;
+            display: inline-block;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .hero-subtext {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .stats-block {
+            margin: 40px 0;
+            padding: 30px 20px;
+            background: rgba(201, 168, 76, 0.05);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+        }
+
+        .stat-item {
+            margin-bottom: 15px;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold);
+            display: block;
+            line-height: 1.2;
+        }
+
+        .disclaimer {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            background-color: var(--red);
+            color: white;
+            text-decoration: none;
+            padding: 18px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .cta-button:active { transform: scale(0.98); }
+
+        /* Section 2: Social Proof */
+        .social-proof {
+            background-color: #0F1423;
+            text-align: center;
+        }
+
+        .social-proof h2 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--red);
+            color: var(--red);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        /* Section 3: Problem Agitation */
+        .pain-points h2 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .pain-list {
+            list-style: none;
+            text-align: left;
+        }
+
+        .pain-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+        }
+
+        .pain-icon {
+            color: var(--red);
+            margin-right: 12px;
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+        /* Section 4: Solution Reveal */
+        .solution {
+            background-color: #0F1423;
+        }
+
+        .gold-label {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .solution h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .fact-list {
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .fact-item {
+            margin-bottom: 12px;
+            font-size: 1rem;
+            display: flex;
+        }
+
+        .fact-label {
+            min-width: 80px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .solution-body {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* Section 5: Story */
+        .story-card {
+            background-color: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        /* Section 6: Seminar Details */
+        .info-card {
+            background: rgba(201, 168, 76, 0.1);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .info-row {
+            margin-bottom: 10px;
+            display: flex;
+        }
+
+        .info-label {
+            width: 60px;
+            font-weight: 700;
+        }
+
+        /* Section 7: FAQ */
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            margin-top: 15px;
+            color: var(--gray);
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        /* Section 8: Final CTA Form */
+        .form-section {
+            background-color: #111827;
+        }
+
+        .invest-form {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 15px;
+            background-color: #1F2937;
+            border: 1px solid var(--border);
+            color: white;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--red);
+            color: white;
+            border: none;
+            padding: 20px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+
+        .footer {
+            padding: 40px 20px;
+            background-color: #05070D;
+            font-size: 0.75rem;
+            color: #555;
+            text-align: center;
+        }
+
+        /* Smooth Scroll */
+        html { scroll-behavior: smooth; }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate { animation: fadeIn 0.8s ease forwards; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- SECTION 1: HERO -->
+    <section class="hero center" id="top">
+        <div class="alert-banner">쉿 — 절대 공유하지 마세요</div>
+        <p class="hero-subtext">지금 보여드릴 건, 어디서나 들을 수 있는 흔해빠진 이야기가 아닙니다.</p>
+        
+        <div class="stats-block">
+            <div class="stat-item">
+                <span class="stat-value">17억 → 130억</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">월 순수익 50,000,000원</span>
+            </div>
+        </div>
+        
+        <p class="disclaimer">강북 반지하 1평 월세에서 강남 건물주가 된 단 하나의 무기</p>
+        <a href="#apply" class="cta-button">지금 바로 확인하기 ▼</a>
+    </section>
+
+    <!-- SECTION 2: SOCIAL PROOF -->
+    <section class="social-proof center">
+        <h2>세미나 대기하실 분들께 미리<br>죄송하다는 말씀 드립니다</h2>
+        <p style="color: var(--gray);">퀄리티를 위해 매우 한정된 인원만 받고 있어 조기에 마감될 수 있습니다.</p>
+        <div class="badge">⚠️ 한정 인원 세미나</div>
+    </section>
+
+    <!-- SECTION 3: PROBLEM AGITATION -->
+    <section class="pain-points center">
+        <h2>혹시 이런 고민 하고 계신가요?</h2>
+        <ul class="pain-list">
+            <li class="pain-item">
+                <span class="pain-icon">✗</span>
+                <div>직장 월급만으로는 절대 건물주 못 된다고 생각하시나요?</div>
+            </li>
+            <li class="pain-item">
+                <span class="pain-icon">✗</span>
+                <div>부동산 투자, 종잣돈 없으면 시작도 못 한다고요?</div>
+            </li>
+            <li class="pain-item">
+                <span class="pain-icon">✗</span>
+                <div>좋은 땅은 이미 다 팔렸다고 생각하시나요?</div>
+            </li>
+            <li class="pain-item">
+                <span class="pain-icon">✗</span>
+                <div>요즘 같은 고금리 시대에 부동산 투자는 늦었다고요?</div>
+            </li>
+        </ul>
+        <p class="text-red bold" style="margin-top: 20px;">아직 늦지 않았습니다.<br>단, 오늘이 마지막 기회일 수 있습니다.</p>
+    </section>
+
+    <!-- SECTION 4: SOLUTION REVEAL -->
+    <section class="solution center">
+        <span class="gold-label">🏆 건물주가 직접 추천하는 땅</span>
+        <h2 class="bold">대한민국 제1호<br>재생에너지 자립도시<br><span class="text-gold">해남 솔라시도</span></h2>
+        <p class="text-gold bold" style="margin-bottom: 20px;">국가 AI컴퓨팅센터 유치 확정<br>2조 5,000억원 초대형 국책사업</p>
+        
+        <div class="fact-list">
+            <div class="fact-item">
+                <span class="fact-label">📍 위치</span>
+                <span>전라남도 해남군 산이면 구성리 일원</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-label">📐 면적</span>
+                <span>632만평 (20,899,330㎡)</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-label">🏛️ 기간</span>
+                <span>2012년 ~ 2030년</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-label">✈️ 공항</span>
+                <span>무안국제공항 40km 이내</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-label">🚢 항만</span>
+                <span>목포 신항만 10km 이내</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-label">🚄 도로</span>
+                <span>서해안고속도로 직접 연결</span>
+            </div>
+        </div>
+        
+        <p class="solution-body">
+            솔라시도는 재생에너지·AI 산업·MICE·정원도시가 동시에 구현되는 대한민국 최초의 미래 자립도시입니다. 전라남도·해남군·전남개발공사·한국관광공사가 공동 참여한 국가 주도 프로젝트입니다.
+        </p>
+    </section>
+
+    <!-- SECTION 5: STORY -->
+    <section class="story center">
+        <h2 class="bold">강북 반지하에서<br>강남 130억 건물주까지</h2>
+        <p style="color: var(--gray);">단기 수익이 아닌, 반짝이지 않는 — 진짜 자산을 만드는 법</p>
+        
+        <div class="story-card">
+            <div class="quote">
+                "저도 처음엔 믿지 않았습니다.<br>하지만 이 땅 하나가 제 인생을 바꿨습니다."
+            </div>
+            <p class="text-gold bold" style="font-size: 1.3rem;">17억 → 130억<br>월 순수익 5,000만원</p>
+        </div>
+        
+        <a href="#apply" class="cta-button" style="margin-top: 30px;">나도 할 수 있는지 확인하기 ▼</a>
+    </section>
+
+    <!-- SECTION 6: SEMINAR DETAILS -->
+    <section class="details center">
+        <h2 class="bold">충격적인 수익화 절대공식<br>— 세미나 안내</h2>
+        
+        <div class="info-card">
+            <div class="info-row">
+                <span class="info-label">📅 일시</span>
+                <span>2024년 5월 25일(토) 오후 2시</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">📍 장소</span>
+                <span>강남구 테헤란로 세미나홀 (개별안내)</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">👥 정원</span>
+                <span>30명 (입금 선착순 마감)</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">💰 비용</span>
+                <span class="text-gold bold">무료 (VIP 초대권 한정)</span>
+            </div>
+        </div>
+        
+        <p class="text-red bold" style="margin-top: 20px;">⚠️ 조기 마감 시 추가 모집 없음</p>
+    </section>
+
+    <!-- SECTION 7: FAQ -->
+    <section class="faq">
+        <h2 class="bold center" style="margin-bottom: 30px;">자주 묻는 질문</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                Q. 땅값이 이미 많이 오른 거 아닌가요?
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                국가AI컴퓨팅센터 착공은 이제 시작입니다. 2030년 개발 완료까지 상승 여력이 충분하며, 현재가 가장 저렴한 시점입니다.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Q. 소액으로도 투자 가능한가요?
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                네, 가능합니다. 세미나에서 소액으로 시작해 우량 자산을 선점하는 구체적인 전략을 공개합니다.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                Q. 기획부동산 아닌가요?
+                <span>+</span>
+            </div>
+            <div class="faq-answer">
+                아닙니다. 솔라시도는 전라남도, 해남군 등 공공기관이 직접 참여하는 거대 국가 프로젝트입니다. 모든 데이터와 진행 상황은 공공 포털에서 확인 가능합니다.
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: FINAL CTA FORM -->
+    <section class="form-section center" id="apply">
+        <h2 class="bold text-red" style="font-size: 1.8rem;">지금 신청하지 않으면<br>다음 기회는 없습니다</h2>
+        <p style="color: var(--gray); margin-top: 10px;">한정 인원 마감 후 추가 접수 없음<br>지금 바로 자리를 확보하세요</p>
+        
+        <div class="invest-form">
+            <!-- 시각적인 폼의 형태는 유지하여 랜딩페이지의 전문성을 높입니다 -->
+            <div class="form-group">
+                <label class="form-label">참여 안내</label>
+                <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 15px;">
+                    아래 버튼을 클릭하여 공식 신청서(구글 폼)를 작성해 주시면 담당자가 확인 후 연락드립니다.
+                </p>
+            </div>
+            
+            <a href="#" id="googleFormLink" target="_blank" class="submit-btn">무료 세미나 신청서 작성하기</a>
+        </div>
+        
+        <p style="font-size: 0.75rem; color: #555; margin-top: 15px;">
+            개인정보는 세미나 안내 목적으로만 사용되며 제3자에게 제공되지 않습니다.
+        </p>
+    </section>
+
+    <!-- SECTION 9: FOOTER -->
+    <footer class="footer">
+        <p>(주)솔라시도 투자 컨설팅 | 사업자등록번호: 000-00-00000</p>
+        <p>서울특별시 강남구 테헤란로 000 | 대표: 홍길동</p>
+        <p style="margin-top: 10px;">Copyright © 2024 Solaraseado Investment. All Rights Reserved.</p>
+    </footer>
+</div>
+
+<script>
+    // [중요] 여기에 본인의 구글 폼 주소를 넣으세요!
+    const MY_GOOGLE_FORM_URL = "https://forms.google.com/your-form-id"; 
+
+    // 구글 폼 링크 연결
+    document.getElementById('googleFormLink').href = MY_GOOGLE_FORM_URL;
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(q => {
+        q.addEventListener('click', () => {
+            const answer = q.nextElementSibling;
+            const isOpen = answer.style.display === 'block';
+            
+            // Close all
+            document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+            document.querySelectorAll('.faq-question span').forEach(s => s.innerText = '+');
+            
+            if (!isOpen) {
+                answer.style.display = 'block';
+                q.querySelector('span').innerText = '-';
+            }
+        });
+    });
+
+    // Scroll Observer for animation
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+</script>
+
+</body>
+</html>
