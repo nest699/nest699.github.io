@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>해남 솔라시도 토지 투자 세미나 - 국가 국책사업 VIP 초청</title>
+    <title>국가 AI 컴퓨팅 센터 - AI 데이터 센터 투자 세미나 VIP 초청</title>
     <!-- Pretendard Font -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <style>
@@ -13,6 +13,8 @@
             --gold: #C9A84C;
             --white: #FFFFFF;
             --red: #D32F2F;
+            --accent-blue: #2563EB;
+            --deep-blue: #0F172A;
             --gray: #A0A0A0;
             --border: #2A2F3E;
         }
@@ -30,43 +32,93 @@
             color: var(--white);
             line-height: 1.6;
             word-break: keep-all;
+            /* 전역 블루 그라데이션 배경 */
+            background: radial-gradient(circle at 50% 0%, var(--deep-blue) 0%, #000 100%);
+            min-height: 100vh;
         }
 
         .container {
             max-width: 480px;
             margin: 0 auto;
-            background-color: var(--bg-color);
+            background-color: rgba(10, 14, 26, 0.95);
             min-height: 100vh;
             position: relative;
-            overflow-x: hidden;
+            z-index: 10;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 1);
+            border-left: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+        }
+
+        /* --- Global Background Bar & Glow Effects --- */
+        .bg-glow-bar {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 480px;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(37, 99, 235, 0.03) 50%, 
+                transparent 100%);
+        }
+
+        /* --- Global Floating Particles --- */
+        #particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 5;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            filter: blur(2px);
+            animation: float-up infinite ease-in-out;
+        }
+
+        @keyframes float-up {
+            0% { transform: translateY(110vh) scale(0.8); opacity: 0; }
+            20% { opacity: 0.4; }
+            80% { opacity: 0.2; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
         }
 
         /* Utility */
         .text-gold { color: var(--gold); }
         .text-red { color: var(--red); }
+        .text-blue { color: var(--accent-blue); }
         .bold { font-weight: 700; }
         .center { text-align: center; }
-        section { padding: 60px 20px; border-bottom: 1px solid var(--border); }
+        section { padding: 60px 20px; border-bottom: 1px solid var(--border); position: relative; }
 
-        /* Image Placeholder Style */
+        /* Image Box Style */
         .image-box {
             width: 100%;
-            height: 200px;
             background-color: #1F2937;
             border-radius: 12px;
-            margin: 20px 0;
+            margin: 24px 0;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--gray);
             font-size: 0.9rem;
-            border: 1px dashed var(--border);
+            border: 1px solid rgba(37, 99, 235, 0.3);
             overflow: hidden;
-            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
         .image-box img {
             width: 100%;
-            height: 100%;
+            height: auto;
+            display: block;
             object-fit: cover;
         }
 
@@ -74,23 +126,24 @@
         .hero {
             padding-top: 80px;
             padding-bottom: 40px;
-            background: linear-gradient(180deg, rgba(10, 14, 26, 0.8) 0%, rgba(10, 14, 26, 1) 100%);
+            background: transparent;
         }
 
         .alert-banner {
             background-color: var(--red);
-            padding: 8px 15px;
+            padding: 8px 16px;
             display: inline-block;
             font-weight: 800;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+            font-size: 1rem;
+            margin-bottom: 24px;
             border-radius: 4px;
+            letter-spacing: -0.5px;
         }
 
         .hero-title {
-            font-size: 2.2rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
+            font-size: 2.1rem;
+            line-height: 1.35;
+            margin-bottom: 24px;
             font-weight: 900;
         }
 
@@ -102,86 +155,70 @@
             text-decoration: none;
             padding: 18px;
             border-radius: 8px;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 800;
             text-align: center;
             box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
-            transition: transform 0.2s;
+            transition: all 0.2s ease;
         }
+        .cta-button:active { transform: scale(0.98); }
 
-        /* Section 1.5: Intro */
-        .intro-points {
-            text-align: left;
-            margin-top: 30px;
-        }
-        .point-item {
-            margin-bottom: 25px;
-        }
+        /* Content Sections */
+        .intro-points { text-align: left; margin-top: 30px; }
+        .point-item { margin-bottom: 25px; padding-left: 10px; border-left: 2px solid var(--accent-blue); }
         .point-title {
             font-size: 1.15rem;
             color: var(--gold);
             font-weight: 700;
             margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-        }
-        .point-title::before {
-            content: '-';
-            margin-right: 10px;
-            color: var(--gold);
-            font-weight: 900;
         }
 
-        /* Section 2: Social Proof */
-        .social-proof { background-color: #0F1423; }
+        /* Badges & Labels */
         .badge {
             display: inline-block;
-            border: 1px solid var(--red);
-            color: var(--red);
-            padding: 4px 12px;
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 6px 14px;
             border-radius: 4px;
             font-size: 0.85rem;
             font-weight: 700;
             margin-top: 20px;
-            text-transform: uppercase;
+            background: rgba(37, 99, 235, 0.05);
         }
 
-        /* Section 4: Solution */
-        .solution { background-color: #0F1423; }
-        .gold-label { color: var(--gold); font-weight: 700; font-size: 0.9rem; margin-bottom: 10px; display: block; }
+        /* Tables & Facts */
         .fact-list { margin: 30px 0; text-align: left; }
         .fact-item { margin-bottom: 12px; display: flex; font-size: 0.95rem; }
-        .fact-label { min-width: 80px; color: var(--gold); font-weight: 700; }
+        .fact-label { min-width: 90px; color: var(--accent-blue); font-weight: 700; }
 
-        /* Section 5: Story */
+        /* Story Card */
         .story-card {
-            background-color: var(--card-bg);
-            padding: 40px 20px;
-            border-radius: 15px;
-            margin-top: 30px;
-            border: 1px solid var(--gold);
+            background: linear-gradient(135deg, var(--card-bg) 0%, #0F172A 100%);
+            padding: 40px 24px;
+            border-radius: 16px;
+            margin-top: 32px;
+            border: 1px solid rgba(37, 99, 235, 0.2);
             position: relative;
         }
 
-        /* Section 6: Seminar Details */
+        /* Seminar Info */
         .info-card {
-            background: rgba(201, 168, 76, 0.1);
-            border: 1px solid rgba(201, 168, 76, 0.3);
-            padding: 25px;
-            border-radius: 10px;
-            margin-top: 20px;
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            padding: 28px;
+            border-radius: 12px;
+            margin-top: 24px;
             text-align: left;
         }
         .info-row { margin-bottom: 15px; display: flex; align-items: center; }
-        .info-label { width: 70px; font-weight: 700; color: var(--gold); }
+        .info-label { width: 70px; font-weight: 700; color: var(--accent-blue); }
 
         /* FAQ */
-        .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
-        .faq-question { font-weight: 700; display: flex; justify-content: space-between; cursor: pointer; }
-        .faq-answer { margin-top: 15px; color: var(--gray); display: none; font-size: 0.9rem; }
+        .faq-item { border-bottom: 1px solid var(--border); padding: 22px 0; }
+        .faq-question { font-weight: 700; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .faq-answer { margin-top: 15px; color: var(--gray); display: none; font-size: 0.95rem; line-height: 1.7; }
 
-        /* Final CTA */
-        .form-section { background-color: #111827; }
+        /* Form CTA */
         .submit-btn {
             width: 100%;
             background-color: var(--red);
@@ -193,182 +230,232 @@
             text-align: center;
             text-decoration: none;
             display: block;
-            margin-top: 20px;
+            margin-top: 24px;
+            border: none;
+            cursor: pointer;
         }
 
-        .footer { padding: 40px 20px; background-color: #05070D; font-size: 0.75rem; color: #555; text-align: center; }
+        .footer { padding: 60px 20px; background-color: #05070D; font-size: 0.8rem; color: #555; text-align: center; }
         .footer .disclaimer-text {
             text-align: left;
-            margin-top: 25px;
-            padding-top: 25px;
+            margin-top: 30px;
+            padding-top: 30px;
             border-top: 1px solid #1A1A1A;
             color: #444;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
+        /* Animations */
         html { scroll-behavior: smooth; }
+        .animate { animation: fadeIn 0.8s ease forwards; opacity: 0; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .animate { animation: fadeIn 0.8s ease forwards; }
     </style>
 </head>
 <body>
 
+<!-- Global Effects Overlay -->
+<div id="particle-container"></div>
+<div class="bg-glow-bar"></div>
+
 <div class="container">
     <!-- SECTION 1: HERO -->
     <section class="hero center" id="top">
-        <div class="alert-banner">NOTICE: 절대 공유하지 마세요</div>
-        <h1 class="hero-title">대한민국의 미래,<br><span class="text-gold">해남 솔라시도</span>를<br>선점하십시오.</h1>
-        <p class="hero-subtext" style="margin-bottom: 20px;">지금 보여드릴 건, 어디서나 들을 수 있는 흔해빠진 이야기가 아닙니다.</p>
+        <div class="alert-banner">CONFIDENTIAL: 국가 핵심 전략 정보</div>
+        <h1 class="hero-title">대한민국 AI 산업의 심장,<br><span class="text-blue">국가 AI 컴퓨팅 센터</span>를<br>선점하십시오.</h1>
+        <p class="hero-subtext" style="color: var(--gray);">2.5조 원 규모의 국책 사업, 데이터 센터 입지 분석과 토지 가치를 공개합니다.</p>
         
         <div class="image-box">
-            <img src="솔라시도1.jpg" alt="해남 솔라시도 미래 도시 조감도">
-
-            
+            <img src="솔라시도1.jpg" alt="국가 AI 컴퓨팅 센터 조감도" onerror="this.alt='[국가 AI 컴퓨팅 센터 메인 조감도]';">
         </div>
 
-        <p class="disclaimer">강북 반지하 1평 월세에서 강남 건물주가 된 단 하나의 무기</p>
-        <a href="#apply" class="cta-button">무료 세미나 신청하기</a>
+        <p class="disclaimer" style="font-size: 0.85rem; color: var(--gray); margin-bottom: 24px;">강북 반지하 1평 월세에서 강남 건물주가 된 단 하나의 무기</p>
+        <a href="#apply" class="cta-button">세미나 신청하기</a>
     </section>
 
     <!-- SECTION 1.5: INTRODUCTION -->
     <section class="intro center">
-        <h2 class="bold" style="font-size: 1.5rem; margin-bottom: 15px;">왜 지금 <span class="text-gold">솔라시도</span>인가?</h2>
-        <p style="color: var(--gray); font-size: 0.95rem;">솔라시도(구성지구)는 전라남도 해남군에 조성되는 약 632만 평 규모의 민관협력 기업도시입니다. 순수한 주거 단지를 넘어 재생에너지와 첨단 산업이 결합된 대한민국 최초의 스마트 시티입니다.</p>
+        <h2 class="bold" style="font-size: 1.6rem; margin-bottom: 20px;">왜 <span class="text-blue">AI 데이터 센터</span>인가?</h2>
+        <p style="color: var(--gray); font-size: 1rem; margin-bottom: 30px;">단순한 신도시를 넘어 대한민국 디지털 경제의 토대가 될 핵심 인프라가 집중됩니다. 해남 솔라시도는 그 거대한 변화의 시작점입니다.</p>
         
         <div class="intro-points">
             <div class="point-item">
-                <div class="point-title">국가 AI 컴퓨팅 센터 유치</div>
-                <p style="font-size: 0.9rem; color: var(--gray);">약 2조 5천억 원 규모의 데이터센터와 AI 인프라가 집중되는 디지털 경제의 심장부입니다.</p>
+                <div class="point-title">국가 AI 컴퓨팅 센터 유치 확정</div>
+                <p style="font-size: 0.95rem; color: var(--gray);">약 2조 5천억 원이 투입되는 초대형 국책 사업으로, 글로벌 AI 기술 패권 경쟁의 전초기지가 될 것입니다.</p>
             </div>
             <div class="point-item">
-                <div class="point-title">RE100 재생에너지 허브</div>
-                <p style="font-size: 0.9rem; color: var(--gray);">국내 최대 규모의 태양광 발전단지를 기반으로, 모든 에너지를 자급자족하는 친환경 에너지 도시입니다.</p>
+                <div class="point-title">초거대 AI 데이터 센터 클러스터</div>
+                <p style="font-size: 0.95rem; color: var(--gray);">빅데이터와 AI 인프라가 집중되는 전용 산업 단지 조성으로 대체 불가능한 입지 가치를 형성합니다.</p>
             </div>
             <div class="point-item">
-                <div class="point-title">대한민국 관광 및 레저의 정점</div>
-                <p style="font-size: 0.9rem; color: var(--gray);">9개의 세계적인 정원과 대형 리조트가 어우러진 꿈의 정원 도시로 거듭납니다.</p>
+                <div class="point-title">국내 최대 RE100 에너지 자립 인프라</div>
+                <p style="font-size: 0.95rem; color: var(--gray);">데이터 센터 가동의 핵심인 전력을 국내 최대 재생에너지 발전단지를 통해 100% 자급자족합니다.</p>
             </div>
         </div>
     </section>
 
-
+    <!-- SECTION 2: SOCIAL PROOF -->
+    <section class="social-proof center">
+        <h2>AI 국책 사업 브리핑<br>죄송하지만 한정된 분만 모십니다</h2>
+        <p style="color: var(--gray); margin-top: 12px;">고급 정보의 보안 유지를 위해 소수 정예 인원으로만 세미나를 진행하며, 조기 마감이 예상됩니다.</p>
+        <div class="badge">AI 데이터 센터 클러스터 특별 세미나</div>
+    </section>
 
     <!-- SECTION 4: SOLUTION -->
     <section class="solution center">
-        <span class="gold-label">전문가가 주목하는 국가 국책 사업</span>
-        <h2 class="bold">제1호 재생에너지 자립도시<br><span class="text-gold">솔라시도 개요</span></h2>
+        <span class="gold-label">AI 핵심 인프라가 들어서는 독보적 입지</span>
+        <h2 class="bold">국가 프로젝트 배경<br><span class="text-blue">해남 솔라시도</span></h2>
         
-        <div class="image-box" style="height: 150px;">
-            <img src="솔라시도2.jpg" alt="솔라시도 개발 계획">
+        <div class="image-box">
+            <img src="솔라시도2.jpg" alt="AI 데이터 센터 에너지 인프라" onerror="this.alt='[국가 최대 태양광 에너지 단지 전경]';">
         </div>
 
         <div class="fact-list">
-            <div class="fact-item"><span class="fact-label">위치</span><span>전라남도 해남군 산이면 구성리 일원</span></div>
-            <div class="fact-item"><span class="fact-label">면적</span><span>632만평 (20,899,330㎡)</span></div>
-            <div class="fact-item"><span class="fact-label">사업 기간</span><span>2012년 ~ 2030년 (국가 주도)</span></div>
-            <div class="fact-item"><span class="fact-label">주요 인프라</span><span>무안공항 40km, 목포 신항만 10km</span></div>
+            <div class="fact-item"><span class="fact-label">사업명</span><span>국가 AI 컴퓨팅 센터 및 데이터 센터 클러스터</span></div>
+            <div class="fact-item"><span class="fact-label">위치</span><span>전라남도 해남군 산이면 일원 (솔라시도 구성지구)</span></div>
+            <div class="fact-item"><span class="fact-label">에너지 특장</span><span>국내 최대 재생에너지 전용 산업단지 배후 포진</span></div>
+            <div class="fact-item"><span class="fact-label">인프라</span><span>자율주행 인프라 및 전용 데이터 통신망 구축</span></div>
         </div>
         
         <p style="font-size: 0.95rem; color: var(--gray); text-align: justify;">
-            전라남도, 해남군, 전남개발공사, 한국관광공사가 공동 참여한 <span class="text-white bold">공신력 있는 프로젝트</span>입니다. 단순한 개발을 넘어 국가 경쟁력을 결정할 핵심 전략지입니다.
+            솔라시도는 단순한 토지 개발이 아닙니다. 대한민국 4차 산업의 핵심인 <span class="text-white bold">AI 데이터 허브</span>로 설계되었습니다. 공공과 민간이 협력하여 국가 경쟁력을 높이는 유일무이한 지역입니다.
         </p>
     </section>
 
     <!-- SECTION 5: STORY -->
     <section class="story center">
-        <h2 class="bold">삶을 바꾼<br>진정한 자산 투자의 힘</h2>
-        <p style="color: var(--gray);">단기 투기가 아닌, 미래 가치를 읽는 눈</p>
+        <h2 class="bold">인프라의 흐름을 읽는 자가<br>자산의 미래를 결정합니다</h2>
+        <p style="color: var(--gray); margin-top: 10px;">도로와 철도의 시대를 넘어, 이제는 데이터가 흐르는 곳이 중심입니다.</p>
         
         <div class="story-card">
-            <p style="font-size: 1.1rem; margin-bottom: 25px; position: relative; z-index: 1;">
-                "정보는 누구나 가질 수 있지만,<br><span class="bold">확신은 국책 사업의 가치를 아는 자만이 가집니다.</span>"
+            <p style="font-size: 1.15rem; margin-bottom: 24px; line-height: 1.7;">
+                "과거에는 강남 개발이 평생의 기회였다면,<br><span class="bold">지금은 국가 AI 컴퓨팅 센터가 그 기회입니다.</span>"
             </p>
-            <p class="text-gold bold" style="font-size: 1.2rem;">변하지 않는 가치,<br>솔라시도에서 그 답을 찾았습니다.</p>
+            <p class="text-blue bold" style="font-size: 1.3rem;">기술 혁명이 만드는 토지의 가치,<br>그 현장을 가장 먼저 확인하십시오.</p>
         </div>
         
-        <a href="#apply" class="cta-button" style="margin-top: 30px;">투자 전략 확인하기</a>
+        <a href="#apply" class="cta-button" style="margin-top: 32px;">데이터 센터 투자 전략 확인</a>
     </section>
 
     <!-- SECTION 6: SEMINAR DETAILS -->
     <section class="details center">
-        <h2 class="bold">국가 사업 브리핑<br>세미나 안내</h2>
+        <h2 class="bold">국가 AI 국책 사업<br>긴급 세미나 안내</h2>
         
         <div class="info-card">
             <div class="info-row">
+                <span class="info-label">주제</span>
+                <span><span class="text-white bold">AI 컴퓨팅 센터 부지 분석 및 투자 가치</span></span>
+            </div>
+            <div class="info-row">
                 <span class="info-label">일시</span>
-                <span><span class="text-white bold">상세 일정 추후 공지</span> (개별 안내)</span>
+                <span>상세 일정 추후 공지 (신청자 개별 문자 안내)</span>
             </div>
             <div class="info-row">
                 <span class="info-label">장소</span>
-                <span>강남구 VIP 세미나홀 (신청자 한정 공개)</span>
-            </div>
-            <div class="info-row">
-                <span class="info-label">정원</span>
-                <span>소수 정예 (선착순 마감 예정)</span>
+                <span>서울 강남구 VIP 전용 세미나룸</span>
             </div>
             <div class="info-row">
                 <span class="info-label">비용</span>
-                <span class="text-gold bold">무료 초청 (사전 예약 필수)</span>
+                <span class="text-blue bold">VIP 초청 (선착순 등록 마감)</span>
             </div>
         </div>
         
-        <p class="text-red bold" style="margin-top: 20px;">공지: 일정 확정 시 신청자 순으로 우선 배정</p>
+        <p class="text-red bold" style="margin-top: 24px;">주의: 일정 확정 시 신청 순서대로 우선 배정됩니다.</p>
     </section>
 
     <!-- SECTION 7: FAQ -->
     <section class="faq">
-        <h2 class="bold center" style="margin-bottom: 30px;">자주 묻는 질문</h2>
+        <h2 class="bold center" style="margin-bottom: 40px;">자주 묻는 질문</h2>
         <div class="faq-item">
-            <div class="faq-question">문: 땅값이 이미 많이 오른 거 아닌가요? <span>펼치기</span></div>
-            <div class="faq-answer">국가 AI 컴퓨팅 센터 착공은 이제 시작입니다. 2030년 개발 완료까지 상승 여력이 충분합니다.</div>
+            <div class="faq-question">Q1. AI 컴퓨팅 센터 유치가 확실한가요? <span>펼치기</span></div>
+            <div class="faq-answer">네, 정부 국책 사업으로 확정 고시되었으며, 총 2.5조 원 규모의 투자가 공식적으로 추진되고 있는 프로젝트입니다.</div>
         </div>
         <div class="faq-item">
-            <div class="faq-question">문: 소액으로도 투자 가능한가요? <span>펼치기</span></div>
-            <div class="faq-answer">세미나에서 소액 투자 전략을 구체적으로 공개해 드립니다.</div>
+            <div class="faq-question">Q2. 데이터 센터 유입이 지가 상승으로 이어지나요? <span>펼치기</span></div>
+            <div class="faq-answer">고급 기술 인력의 상주와 관련 IT 기업들의 배후 단지 입주로 인해 주변 지가와 상권 가치는 비약적인 상승을 보이게 됩니다.</div>
         </div>
         <div class="faq-item">
-            <div class="faq-question">문: 기획부동산 아닌가요? <span>펼치기</span></div>
-            <div class="faq-answer">전라남도, 해남군 등 공공기관이 공동 참여한 국가 주도 국책 사업입니다.</div>
+            <div class="faq-question">Q3. 해남 솔라시도가 타 기업도시와 차별화되는 점은? <span>펼치기</span></div>
+            <div class="faq-answer">단순 주거나 제조 중심이 아닌 '데이터'와 '에너지'라는 미래 핵심 자산을 기반으로 설계된 유일한 특화형 스마트 시티입니다.</div>
         </div>
     </section>
 
     <!-- SECTION 8: FINAL CTA -->
     <section class="form-section center" id="apply">
-        <h2 class="bold text-red" style="font-size: 1.8rem;">지금 신청하지 않으면<br>다음 기회는 없습니다</h2>
-        <p style="color: var(--gray); margin-top: 10px;">한정 인원 마감 후 추가 접수 불가<br>지금 바로 참석 의사를 밝혀주세요</p>
+        <h2 class="bold text-red" style="font-size: 1.8rem;">지금 신청하지 않으면<br>기회는 지나갑니다</h2>
+        <p style="color: var(--gray); margin-top: 10px;">한정 인원 마감 시 추가 접수 절대 불가<br>AI 데이터 센터의 미래를 소유하세요</p>
         
         <div class="invest-form">
-            <div class="info-card" style="background: rgba(255, 255, 255, 0.05); margin-bottom: 20px;">
-                <p style="font-size: 0.95rem; line-height: 1.6;">
-                    아래 버튼을 클릭하여 <span class="text-gold bold">공식 신청서(구글 폼)</span>를 작성해 주시면, 일정이 확정되는 대로 우선 연락을 드립니다.
+            <div class="info-card" style="background: rgba(255, 255, 255, 0.03); margin-bottom: 24px;">
+                <p style="font-size: 1rem; line-height: 1.6;">
+                    아래 버튼을 클릭하여 <span class="text-blue bold">신청서(구글 폼)</span>를 작성하시면, 데이터 센터 분석 자료와 함께 세미나 일정을 최우선으로 안내해 드립니다.
                 </p>
             </div>
-            <a href="https://forms.gle/LX9GaanDYDrQwZYB8" target="_blank" class="submit-btn">무료 세미나 신청서 작성하기</a>
+            <a href="https://forms.gle/LX9GaanDYDrQwZYB8" target="_blank" class="submit-btn">AI 개발 토지 세미나 신청하기</a>
         </div>
     </section>
 
     <!-- SECTION 9: FOOTER -->
     <footer class="footer">
-        <p>Copyright © 2024 Solaraseado. All Rights Reserved.</p>
+        <p>Copyright © 2024 AI Computing Hub. All Rights Reserved.</p>
         
         <div class="disclaimer-text">
-            <p>면책 조항 (Disclaimer): 본 페이지는 국토교통부 공공데이터 및 솔라시도 공식 자료를 바탕으로 작성되었으며, 투자 권유가 아닌 정보 제공을 목적으로 합니다. 제공된 데이터와 분석 내용은 시점에 따라 달라질 수 있으며, 부동산 투자의 최종 결정과 책임은 투자자 본인에게 있음을 알려드립니다.</p>
-            <p style="margin-top: 8px;">[출처] [입지분석] 솔라시도 기업도시 지가 분석: RE100 데이터센터부터 지가 분석 지도까지 | 작성자 당나귀</p>
+            <p>면책 조항 (Disclaimer): 본 페이지는 국토교통부 공공데이터 및 국가 AI 컴퓨팅 센터 관련 공식 발표 자료를 바탕으로 작성되었으며, 투자 권유가 아닌 정보 제공을 목적으로 합니다. 부동산 투자의 최종 결정과 책임은 투자자 본인에게 있음을 알려드립니다.</p>
+            <p style="margin-top: 10px;">[출처] [입지분석] 솔라시도 기업도시 지가 분석: RE100 데이터센터부터 지가 분석 지도까지 | 작성자 당나귀</p>
         </div>
     </footer>
 </div>
 
 <script>
-    // FAQ Accordion
+    /**
+     * Particle Background Generator
+     * Creates floating bubbles that cover the entire viewport.
+     */
+    function initParticles() {
+        const container = document.getElementById('particle-container');
+        const count = 40; // 페이지 전체를 위해 개수 증가
+
+        for (let i = 0; i < count; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            
+            const size = Math.random() * 6 + 2;
+            const left = Math.random() * 100;
+            const delay = Math.random() * 20;
+            const duration = Math.random() * 15 + 10;
+            const opacity = Math.random() * 0.3 + 0.1;
+            
+            p.style.width = `${size}px`;
+            p.style.height = `${size}px`;
+            p.style.left = `${left}vw`;
+            p.style.animationDelay = `-${delay}s`;
+            p.style.animationDuration = `${duration}s`;
+            p.style.opacity = opacity;
+            
+            // Randomly tint some particles with blue
+            if (Math.random() > 0.6) {
+                p.style.background = 'rgba(37, 99, 235, 0.4)';
+            } else {
+                p.style.background = 'rgba(255, 255, 255, 0.3)';
+            }
+
+            container.appendChild(p);
+        }
+    }
+
+    /**
+     * FAQ Accordion Logic
+     */
     document.querySelectorAll('.faq-question').forEach(q => {
         q.addEventListener('click', () => {
             const answer = q.nextElementSibling;
             const isOpen = answer.style.display === 'block';
+            
             document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
             document.querySelectorAll('.faq-question span').forEach(s => s.innerText = '펼치기');
+            
             if (!isOpen) {
                 answer.style.display = 'block';
                 q.querySelector('span').innerText = '접기';
@@ -376,14 +463,26 @@
         });
     });
 
-    // Scroll Observer
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('animate');
-        });
-    }, { threshold: 0.1 });
+    /**
+     * Intersection Observer for Section Animations
+     */
+    const observeSections = () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
 
-    document.querySelectorAll('section').forEach(section => observer.observe(section));
+        document.querySelectorAll('section').forEach(s => observer.observe(s));
+    }
+
+    // Initialize everything on load
+    window.onload = () => {
+        initParticles();
+        observeSections();
+    };
 </script>
 
 </body>
